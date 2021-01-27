@@ -54,6 +54,7 @@ public class Chronometre {
         return timeToHMS(getDureeSec());
     }
 
+    // Affichage du temps au format 00h00min00s
     public static String timeToHMS(long tempsS) {
         int h = (int) (tempsS / 3600);
         int m = (int) ((tempsS % 3600) / 60);
@@ -78,5 +79,10 @@ public class Chronometre {
         }
 
         return r;
+    }
+
+    // Conversion de la durée en seconde
+    public static long getConvertSec(long laDuree) {
+        return laDuree/1000;
     }
 }
