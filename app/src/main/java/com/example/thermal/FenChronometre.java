@@ -19,6 +19,7 @@ public class FenChronometre extends AppCompatActivity {
     public int renit = 1;
     public long dureeChrono;
     public String resultTempsChrono;
+    public long allDureeChrono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class FenChronometre extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     dureeChrono = SystemClock.elapsedRealtime() - chronoAffichage.getBase();
+                    allDureeChrono = addTemps(dureeChrono);
                     chronoAffichage.stop();
                     boutonStart.setEnabled(true);
                     boutonStop.setEnabled(false);
@@ -56,5 +58,15 @@ public class FenChronometre extends AppCompatActivity {
                             .setAction("Action", null).show();
             }
         });
+
+    }
+
+    public long addTemps(long dureeChronometre) {
+        allDureeChrono = dureeChronometre + allDureeChrono;
+        return allDureeChrono;
+    }
+
+    public long getDuree() {
+        return allDureeChrono;
     }
 }
