@@ -33,12 +33,12 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        final Button boutonConsultation = (Button) findViewById(R.id.consultation);
+        boutonConsultation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent activiteConsultation = new Intent(Main.this, FenConsultation.class);
+                startActivityForResult(activiteConsultation, REQUEST_CODE_DETAIL);
             }
         });
     }
