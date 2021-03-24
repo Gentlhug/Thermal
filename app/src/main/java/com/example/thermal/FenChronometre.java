@@ -30,6 +30,8 @@ public class FenChronometre extends AppCompatActivity {
         final Button boutonStart = (Button) findViewById(R.id.buttonStart);
         final Button boutonStop = (Button) findViewById(R.id.buttonStop);
 
+        consultation = Main.getTime();
+
         // Bouton Start
         boutonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +61,7 @@ public class FenChronometre extends AppCompatActivity {
     }
 
     public static String getTime() {
-        return Chronometre.timeToHMS(consultation.getDuree());
+        return Chronometre.timeToHMS(Chronometre.getConvertSec(consultation.getDuree()));
     }
 
 }

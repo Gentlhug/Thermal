@@ -15,7 +15,11 @@ import android.widget.Button;
 public class Main extends AppCompatActivity {
 
     private static final int REQUEST_CODE_DETAIL = 1;
+    private static final TimeContainer consultation = new TimeContainer();
 
+    public static TimeContainer getTime(){
+        return consultation;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
