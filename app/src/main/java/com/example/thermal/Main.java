@@ -1,5 +1,6 @@
 package com.example.thermal;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,7 +17,7 @@ import android.widget.Button;
 public class Main extends AppCompatActivity {
 
     private static final int REQUEST_CODE_DETAIL = 1;
-    private static final TimeContainer consultation = new TimeContainer(Main.this);
+    private static final TimeContainer consultation = new TimeContainer();
     private static final Chronometre chrono = new Chronometre();
 
     public static TimeContainer getTime(){
@@ -49,5 +50,27 @@ public class Main extends AppCompatActivity {
                 startActivityForResult(activiteConsultation, REQUEST_CODE_DETAIL);
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (consultation.isMaintenanceRequested()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Main.this);
+            builder.setMessage("Ça fait 30h, votre machine nécessite un entretien !");
+            builder.setNegativeButton("Répeter", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.setPositiveButton("Faire l'entretien", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    consultation.restMaintenance();
+                }
+            });
+            builder.show();
+        }
     }
 }

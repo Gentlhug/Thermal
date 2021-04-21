@@ -5,26 +5,31 @@ import android.content.Context;
 import androidx.appcompat.app.AlertDialog;
 
 public class TimeContainer {
-    protected Context membre;
-    public TimeContainer(Context context){
-        this.membre = context;
-    }
 
     public long allDureeChrono = 0; // en MS
+    public long entretien = 0;
 
     public void addTemps(long dureeChronometre) {
         allDureeChrono = dureeChronometre + allDureeChrono;
+        entretien = dureeChronometre + entretien;
     }
 
     public long getDuree() {
         return allDureeChrono;
     }
 
-    protected void getMessageEntretien(){
-        if (getDuree() >= 2000){
-            AlertDialog.Builder builder = new AlertDialog.Builder(membre);
-            builder.setMessage("Ça fait 30h, votre machine nécessite un entretien !");
-            builder.show();
+    public long getDureeEntretien(){
+        return entretien;
+    }
+
+    public boolean isMaintenanceRequested(){
+        if (entretien >= 108000000){
+            return true;
         }
+        return false;
+    }
+
+    public void restMaintenance(){
+        entretien = 0;
     }
 }

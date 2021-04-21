@@ -1,8 +1,11 @@
 package com.example.thermal;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class FenConsultation extends AppCompatActivity {
@@ -10,6 +13,7 @@ public class FenConsultation extends AppCompatActivity {
     public FenChronometre time;
     public TimeContainer consultation;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,10 @@ public class FenConsultation extends AppCompatActivity {
         } else {
             affichageDuree.setText("Aucune données à afficher !");
         }
+
+        ProgressBar barEntretien = (ProgressBar) findViewById(R.id.progressBarEntretien);
+        barEntretien.setMax(108000000);
+        barEntretien.setProgress(Math.toIntExact(consultation.getDureeEntretien()));
     }
 
 
