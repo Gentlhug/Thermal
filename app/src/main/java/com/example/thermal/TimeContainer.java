@@ -2,12 +2,13 @@ package com.example.thermal;
 
 import android.content.Context;
 
+import java.io.Serializable;
+
 import androidx.appcompat.app.AlertDialog;
 
-public class TimeContainer {
-    protected Context membre;
-    public TimeContainer(Context context){
-        this.membre = context;
+public class TimeContainer implements Serializable {
+    public TimeContainer(){
+
     }
 
     public long allDureeChrono = 0; // en MS
@@ -20,7 +21,7 @@ public class TimeContainer {
         return allDureeChrono;
     }
 
-    protected void getMessageEntretien(){
+    protected void getMessageEntretien(Context membre){
         if (getDuree() >= 2000){
             AlertDialog.Builder builder = new AlertDialog.Builder(membre);
             builder.setMessage("Ça fait 30h, votre machine nécessite un entretien !");

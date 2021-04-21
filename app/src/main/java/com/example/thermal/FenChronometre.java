@@ -17,7 +17,7 @@ public class FenChronometre extends AppCompatActivity {
     public int renit = 1;
     public long dureeChrono;
     public String resultTempsChrono;
-    public static TimeContainer consultation;
+    public TimeContainer consultation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class FenChronometre extends AppCompatActivity {
         final Button boutonStart = (Button) findViewById(R.id.buttonStart);
         final Button boutonStop = (Button) findViewById(R.id.buttonStop);
 
-        consultation = Main.getTime();
+        consultation = (TimeContainer) getIntent().getSerializableExtra("Consultation");
 
         // Bouton Start
         boutonStart.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class FenChronometre extends AppCompatActivity {
         });
     }
 
-    public static String getTime() {
+    public String getTime() {
         return Chronometre.timeToHMS(Chronometre.getConvertSec(consultation.getDuree()));
     }
 

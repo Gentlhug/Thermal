@@ -16,12 +16,8 @@ import android.widget.Button;
 public class Main extends AppCompatActivity {
 
     private static final int REQUEST_CODE_DETAIL = 1;
-    private static final TimeContainer consultation = new TimeContainer(Main.this);
+    private TimeContainer consultation = new TimeContainer();
     private static final Chronometre chrono = new Chronometre();
-
-    public static TimeContainer getTime(){
-        return consultation;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +33,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent activiteChrono = new Intent(Main.this, FenChronometre.class);
+                activiteChrono.putExtra("Consultation", consultation);
                 startActivityForResult(activiteChrono, REQUEST_CODE_DETAIL);
             }
         });
@@ -46,6 +43,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent activiteConsultation = new Intent(Main.this, FenConsultation.class);
+                activiteConsultation.putExtra("Consultation", consultation);
                 startActivityForResult(activiteConsultation, REQUEST_CODE_DETAIL);
             }
         });

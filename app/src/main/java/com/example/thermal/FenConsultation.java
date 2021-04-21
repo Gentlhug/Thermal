@@ -16,7 +16,7 @@ public class FenConsultation extends AppCompatActivity {
         setContentView(R.layout.activity_fen_consultation);
 
         time = new FenChronometre();
-        consultation = Main.getTime();
+        consultation = (TimeContainer) getIntent().getSerializableExtra("Consultation");
 
         final TextView affichageDuree = (TextView) findViewById(R.id.valeurDuree);
         if (consultation.getDuree() != 0){
