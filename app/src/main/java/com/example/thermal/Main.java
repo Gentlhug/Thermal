@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -15,7 +16,8 @@ import android.widget.Button;
 public class Main extends AppCompatActivity {
 
     private static final int REQUEST_CODE_DETAIL = 1;
-    private static final TimeContainer consultation = new TimeContainer();
+    private static final TimeContainer consultation = new TimeContainer(Main.this);
+    private static final Chronometre chrono = new Chronometre();
 
     public static TimeContainer getTime(){
         return consultation;
@@ -27,6 +29,8 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         final Button boutonChrono = (Button) findViewById(R.id.chrono);
         boutonChrono.setOnClickListener(new View.OnClickListener() {
